@@ -2,8 +2,7 @@
 
 ## Introdução
 Este projeto foi idealizado para atender ao Desafio proposto para oportunidade de TI no banco Itaú.  
-O Microserviço valida as regras de contratação de crédito consignado para aposentados e pensionistas.
-​
+O Microserviço valida as regras de contratação de crédito consignado para aposentados e pensionistas.  
 Tecnologias utilizadas neste projeto:
  - Java 8 - Framework Spring Boot; 
  - Apache Maven;
