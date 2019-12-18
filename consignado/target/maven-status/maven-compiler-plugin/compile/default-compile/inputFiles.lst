@@ -1,0 +1,15 @@
+/Users/fernanda.oliveira/Desktop/consignado/src/main/java/br/com/itau/consignado/resource/ParametersResource.java
+/Users/fernanda.oliveira/Desktop/consignado/src/main/java/br/com/itau/consignado/ConsignadoApplication.java
+/Users/fernanda.oliveira/Desktop/consignado/src/main/java/br/com/itau/consignado/domain/CreditContract.java
+/Users/fernanda.oliveira/Desktop/consignado/src/main/java/br/com/itau/consignado/repository/ParametersRepository.java
+/Users/fernanda.oliveira/Desktop/consignado/src/main/java/br/com/itau/consignado/service/ClientService.java
+/Users/fernanda.oliveira/Desktop/consignado/src/main/java/br/com/itau/consignado/domain/Client.java
+/Users/fernanda.oliveira/Desktop/consignado/src/main/java/br/com/itau/consignado/resource/CreditContractResource.java
+/Users/fernanda.oliveira/Desktop/consignado/src/main/java/br/com/itau/consignado/repository/CreditContractRepository.java
+/Users/fernanda.oliveira/Desktop/consignado/src/main/java/br/com/itau/consignado/repository/ClientRepository.java
+/Users/fernanda.oliveira/Desktop/consignado/src/main/java/br/com/itau/consignado/resource/ClientResource.java
+/Users/fernanda.oliveira/Desktop/consignado/src/main/java/br/com/itau/consignado/domain/Parameters.java
+/Users/fernanda.oliveira/Desktop/consignado/src/main/java/br/com/itau/consignado/service/impl/CreditContractServiceImpl.java
+/Users/fernanda.oliveira/Desktop/consignado/src/main/java/br/com/itau/consignado/service/CreditContractService.java
+/Users/fernanda.oliveira/Desktop/consignado/src/main/java/br/com/itau/consignado/domain/Error.java
+/Users/fernanda.oliveira/Desktop/consignado/src/main/java/br/com/itau/consignado/service/impl/ClientServiceImpl.java
