@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -48,6 +49,29 @@ public class ClientResource {
 		try {
 			// cadastra um novo cliente. Deve-se ter apenas um cadastro por cpf.
 			clientResult = clientService.varifyClient(client);
+		} catch (Exception e) {
+			Error error = new Error(400, e.getMessage());
+			return new ResponseEntity<String>(error.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+
+		Client result = (Client) clientResult.get();
+
+		return new ResponseEntity<Client>(result, HttpStatus.OK);
+	}
+	
+	@ApiOperation(value = "Registra um novo cliente na base de dados")
+	@PutMapping()
+	public ResponseEntity<?> updateClient(@Valid @RequestBody Client client) throws Exception {
+
+		Optional<?> clientResult;
+		if (client.getId() == null) {
+			Error error = new Error(400, "Para atualização de um cliente, deve-se informar o Id");
+			return new ResponseEntity<String>(error.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+
+		try {
+			// cadastra um novo cliente. Deve-se ter apenas um cadastro por cpf.
+			clientResult = clientService.updateClient(client);
 		} catch (Exception e) {
 			Error error = new Error(400, e.getMessage());
 			return new ResponseEntity<String>(error.getMessage(), HttpStatus.BAD_REQUEST);

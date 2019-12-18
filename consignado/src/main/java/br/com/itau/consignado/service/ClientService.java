@@ -18,6 +18,8 @@ public interface ClientService {
 
 	public Optional<?> varifyClient(Client client) throws Exception;
 	
+	public Optional<?> updateClient(Client client) throws Exception;
+	
 	public Optional<?> setAutorizationDefault(Client client, CreditContract creditContract);
 	
 	public Optional<?> benefitUnlock(String cpf) throws Exception;

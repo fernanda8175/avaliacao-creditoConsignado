@@ -71,14 +71,14 @@ public class ClientServiceImpl implements ClientService {
 		}
 		return clientTmp;
 	}
-	
+
 	public List<Client> getAllClients() throws Exception {
 
 		List<Client> clientTmp = null;
 
 		// recupera as informaões de todos os cliente
 		clientTmp = clientRepository.findAll();
-		
+
 		if (clientTmp.isEmpty()) {
 			throw new Exception("Não existem clientes cadastrados na base de dados.");
 		}
@@ -150,6 +150,23 @@ public class ClientServiceImpl implements ClientService {
 					+ " do último empréstimo consignado.");
 		}
 		return Optional.ofNullable(client);
+	}
+
+	public Optional<?> updateClient(Client client) throws Exception {
+		Optional<Client> clientVeriry = clientRepository.findById(client.getId());
+			
+		if (!clientVeriry.isPresent()) {
+			throw new Exception("Cliente não cadastrado");
+		}
+
+		client.setAutorizationDate(clientVeriry.get().getAutorizationDate());
+		if(clientVeriry.get().getDispatchDate() != null) {
+			client.setDispatchDate(clientVeriry.get().getDispatchDate());
+		}
+		
+		client = clientRepository.save(client);
+		return Optional.ofNullable(client);
+
 	}
 
 }
