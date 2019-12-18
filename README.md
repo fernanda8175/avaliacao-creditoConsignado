@@ -48,17 +48,21 @@ Com esses passos finalizados, um container de mongodb estará em execução em s
 - `docker ps`
 ​
 #### Build da aplicação via Maven
-- Através do Maven, conseguimos compilar o projeto Java. Para tal ação, execute o comando abaixo:
-  - `mvn clean package`
-- Com o fim da compilação, precisamos criar uma imagem Docker com os arquivos referentes a nossa aplicação. Isso é possível executando o comando:  
+Através do Maven, conseguimos compilar o projeto Java. Para tal ação, execute o comando abaixo:
+- `mvn clean package`  
+
+Com o fim da compilação, chega o momento de gerar a imagem docker da nossa aplicação.
+  
+#### Criação da imagem Docker
+A imagem docker da aplicação será criado com base na imagem oficial OpenJDK ([openjdk:8-jdk-alpine](https://hub.docker.com/layers/openjdk/library/openjdk/8-jdk-alpine/images/sha256-210ecd2595991799526a62a7099718b149e3bbefdb49764cc2a450048e0dd4c0)).  
+Para criar a imagem, execute o comando:  
   - `docker build -t consulta_consignado:1.0 -f Dockerfile .`
   
 #### Iniciando a aplicação
 Temos o banco de dados funcionando e a aplicação compilada dentro de uma imagem docker. Agora precisamos criar um container baseado na imagem docker da aplicação para conseguir utiliza-la.  
-O Container será criado com base na imagem do OpenJDK ([openjdk:8-jdk-alpine](https://hub.docker.com/layers/openjdk/library/openjdk/8-jdk-alpine/images/sha256-210ecd2595991799526a62a7099718b149e3bbefdb49764cc2a450048e0dd4c0))
-​
-- Vamos executar o comando abaixo para iniciar a aplicação:
-  - `docker run --name consulta_consignado_app -d -p 8080:8080 --network=itau consulta_consignado:1.0`  
+
+Vamos executar o comando abaixo para iniciar a aplicação:
+- `docker run --name consulta_consignado_app -d -p 8080:8080 --network=itau consulta_consignado:1.0`  
 
 Executando o comando abaixo é possível identificar dois containers ativos, um de mongodb e outro com a aplicação *consulta_consignado_app*.    
 - `docker ps`
