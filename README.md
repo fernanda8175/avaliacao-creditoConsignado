@@ -105,10 +105,10 @@ Exemplos de requests:
   - ```
     {
          “id”: “5dfa3561637e2f2f8dde18f7",
-         “cpf”: “39016914803",
+         “cpf”: “40133618846",
          “nome”: “Fernanda”,
          “margemContratacao”: 10,
-         “aposentadoria”: 8531629,
+         “aposentadoria”: 1234,
          “dataAutorizacao”: “2020-06-15T01:00:00.000+0000",
          “dataNascimento”: “1993-02-19T00:00:00.000+0000",
          “dataDespacho”: “2019-12-18T00:00:00.000+0000"
