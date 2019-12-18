@@ -27,10 +27,13 @@ public class CreditContract {
 	@NotNull
 	@JsonProperty("cpf")
 	private String cpf;
+	@NotNull
 	@JsonProperty("valorContratado")
 	private BigDecimal contractedValue;
+	@NotNull
 	@JsonProperty("parcelas")
 	private int installments;
+	@NotNull
 	@JsonProperty("diaVencimento")
 	private int installmentDay;
 	@NotNull
@@ -39,6 +42,7 @@ public class CreditContract {
 	@NotNull
 	@JsonProperty("fimContrato")
 	private Date endDate;
+	@NotNull
 	@JsonProperty("aposentadoria")
 	private int benefitNumber;
 

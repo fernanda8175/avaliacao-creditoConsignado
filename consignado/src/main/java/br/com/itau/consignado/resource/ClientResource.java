@@ -3,14 +3,10 @@ package br.com.itau.consignado.resource;
  * Controle de Clientes para crédito Consignado
  */
 
-
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.itau.consignado.domain.Client;
@@ -40,6 +35,7 @@ public class ClientResource {
 	@Autowired
 	ClientRepository clientRepository;
 
+	@ApiOperation(value = "Registra um novo cliente na base de dados")
 	@PostMapping()
 	public ResponseEntity<?> registerClient(@Valid @RequestBody Client client) throws Exception {
 
@@ -50,19 +46,18 @@ public class ClientResource {
 		}
 
 		try {
-			//cadastra um novo cliente. Deve-se ter apenas um cadastro por cpf.
+			// cadastra um novo cliente. Deve-se ter apenas um cadastro por cpf.
 			clientResult = clientService.varifyClient(client);
 		} catch (Exception e) {
 			Error error = new Error(400, e.getMessage());
 			return new ResponseEntity<String>(error.getMessage(), HttpStatus.BAD_REQUEST);
 		}
-		
+
 		Client result = (Client) clientResult.get();
 
 		return new ResponseEntity<Client>(result, HttpStatus.OK);
 	}
 
-	
 	@ApiOperation(value = "Valida a possibilidade do cliente realizar um novo empréstimo consignado")
 	@GetMapping(value = "/autorized/{cpf}")
 	public ResponseEntity<?> validateCredit(@PathVariable(required = true, value = "cpf") String cpf) {
@@ -80,7 +75,7 @@ public class ClientResource {
 		return new ResponseEntity<Client>(client, HttpStatus.OK);
 
 	}
-	
+
 	@ApiOperation(value = "Retorna os dados de um determinado cliente")
 	@GetMapping(value = "/{cpf}")
 	public ResponseEntity<?> getClient(@PathVariable(required = true, value = "cpf") String cpf) {
@@ -92,18 +87,18 @@ public class ClientResource {
 			Error error = new Error(400, e.getMessage());
 			return new ResponseEntity<String>(error.getMessage(), HttpStatus.BAD_REQUEST);
 		}
-		
+
 		return new ResponseEntity<Client>(client, HttpStatus.OK);
 
 	}
-	
+
 	@ApiOperation(value = "Recupera todos os clientes que podem realizar um novo empréstimo consignado (Ativo ou Passivo)")
 	@GetMapping("/autorized")
 	public ResponseEntity<?> validateAll() {
 
 		Optional<?> clientValidate = null;
 		try {
-			//busca todos os clientes que podem contratar empréstimos novos
+			// busca todos os clientes que podem contratar empréstimos novos
 			clientValidate = clientService.validateCredit(null);
 		} catch (Exception e) {
 			Error error = new Error(400, e.getMessage());
@@ -115,7 +110,7 @@ public class ClientResource {
 		return new ResponseEntity<List<Client>>(client, HttpStatus.OK);
 
 	}
-	
+
 	@ApiOperation(value = "Retorna os dados todos os clientes cadastrados")
 	@GetMapping()
 	public ResponseEntity<?> getAllClient() {
@@ -127,7 +122,7 @@ public class ClientResource {
 			Error error = new Error(400, e.getMessage());
 			return new ResponseEntity<String>(error.getMessage(), HttpStatus.BAD_REQUEST);
 		}
-		
+
 		return new ResponseEntity<List<Client>>(clients, HttpStatus.OK);
 
 	}
